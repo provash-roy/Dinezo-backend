@@ -1,27 +1,29 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const menuSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
+    description: {
       type: String,
       required: true,
     },
-    role: {
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    category: {
       type: String,
-      enum: ["user", "admin"],
-      default: "user",
+      required: true,
+    },
+    imageUrl: {
+      type: String,
     },
   },
   { timestamps: true }
 );
 
-export const User = mongoose.model("User", userSchema);
+export const Menu = mongoose.model("Menu", menuSchema);
